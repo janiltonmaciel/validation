@@ -22,7 +22,7 @@ func AddParamValidator(key string, f Validator) error {
 	return goerrors.New(fmt.Sprintf("Validator %s já adicionado", key))
 }
 
-func ValidatorParams(ps httprouter.Params) *errors.HTTP {
+func ValidatorParams(ps httprouter.Params) error {
 	for i := range ps {
 		value := ps[i].Value
 		key := ps[i].Key
