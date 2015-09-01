@@ -1,6 +1,7 @@
 package validation
 
 import (
+	goerrors "errors"
 	"fmt"
 
 	"github.com/julienschmidt/httprouter"
@@ -8,7 +9,7 @@ import (
 )
 
 type Validator interface {
-	Validate(key, value string) error
+	Validate(key, value string) *errors.HTTP
 }
 
 var validators = map[string]Validator{}
@@ -18,10 +19,10 @@ func AddParamValidator(key string, f Validator) error {
 		validators[key] = f
 		return nil
 	}
-	return errors.New(fmt.Sprintf("Validator %s já adicionado", key))
+	return goerrors.New(fmt.Sprintf("Validator %s já adicionado", key))
 }
 
-func ValidatorParams(ps httprouter.Params) error {
+func ValidatorParams(ps httprouter.Params) *errors.HTTP {
 	for i := range ps {
 		value := ps[i].Value
 		key := ps[i].Key
