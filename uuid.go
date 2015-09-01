@@ -12,7 +12,7 @@ var reUUID = regexp.MustCompile(formatUUID)
 
 type UUIDValidator struct{}
 
-func (u UUIDValidator) Validate(key string, value string) error {
+func (u UUIDValidator) Validate(key string, value string) *errors.HTTP {
 	if isOK := UUIDMath(value); !isOK {
 		return errors.HttpParamInvalidError("%s invalid param", key)
 	}
