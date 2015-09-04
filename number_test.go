@@ -1,6 +1,7 @@
 package validation_test
 
 import (
+	"gitlab.globoi.com/bastian/falkor/errors"
 	"gitlab.globoi.com/bastian/falkor/validation"
 	"gopkg.in/check.v1"
 )
@@ -19,12 +20,14 @@ func (s *numberSuite) TestNumberNegative(c *check.C) {
 	numberV := validation.NumberValidator{}
 	err := numberV.Validate("pageNumber", "-1")
 	c.Assert(err, check.NotNil)
+	c.Assert(err.Code, check.Equals, errors.StatusUnprocessable)
 }
 
 func (s *numberSuite) TestNumberNotInt(c *check.C) {
 	numberV := validation.NumberValidator{}
 	err := numberV.Validate("pageNumber", "nonene")
 	c.Assert(err, check.NotNil)
+	c.Assert(err.Code, check.Equals, errors.StatusUnprocessable)
 }
 
 func (s *numberSuite) TestNumberMinValue(c *check.C) {
@@ -36,6 +39,7 @@ func (s *numberSuite) TestNumberMinValue(c *check.C) {
 
 	err = numberV.Validate("pageNumber", "0")
 	c.Assert(err, check.NotNil)
+	c.Assert(err.Code, check.Equals, errors.StatusUnprocessable)
 }
 
 func (s *numberSuite) TestNumberDefault(c *check.C) {
