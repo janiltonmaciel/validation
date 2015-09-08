@@ -17,7 +17,7 @@ func (n NumberValidator) Validate(key string, value string) *errors.HTTP {
 		log.WithFields(log.Fields{
 			"key":   key,
 			"value": value,
-		}).Info("Invalid param number")
+		}).Warn("Invalid param number")
 		return errors.HttpParamInvalidError("%s invalid param", key)
 	}
 	return nil
