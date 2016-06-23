@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/julienschmidt/httprouter"
-	"gitlab.globoi.com/bastian/falkor/errors"
+	"github.com/janiltonmaciel/errors"
 )
 
 type Validator interface {

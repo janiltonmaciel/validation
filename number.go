@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	log "github.com/Sirupsen/logrus"
-	"gitlab.globoi.com/bastian/falkor/errors"
+	"github.com/janiltonmaciel/errors"
 )
 
 type NumberValidator struct {

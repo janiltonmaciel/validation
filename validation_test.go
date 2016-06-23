@@ -1,9 +1,9 @@
 package validation_test
 
 import (
+	"github.com/janiltonmaciel/errors"
+	"github.com/janiltonmaciel/validation"
 	"github.com/julienschmidt/httprouter"
-	"gitlab.globoi.com/bastian/falkor/errors"
-	"gitlab.globoi.com/bastian/falkor/validation"
 	"gopkg.in/check.v1"
 )
 

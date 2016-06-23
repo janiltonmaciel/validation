@@ -1,7 +1,7 @@
 package validation_test
 
 import (
-	"gitlab.globoi.com/bastian/falkor/validation"
+	"github.com/janiltonmaciel/validation"
 	"gopkg.in/check.v1"
 )
 
